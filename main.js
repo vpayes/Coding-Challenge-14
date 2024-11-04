@@ -31,3 +31,22 @@ async function fetchTickets() {
         loadingMessage.style.display = "None";
     }
 }
+
+//Display Tickets Dynamically on the Page
+function displayTickets(tickets) {
+    const ticketContainer = document.getElementById("ticket-container");
+
+    tickets.forEach(ticket => {
+        const ticketCard = document.createElement("div");
+        ticketCard.className = "ticket-card";
+
+        ticketCard.innerHTML = `
+            <h2>Ticket ID: ${ticket.id}</h2>
+            <p><strong>Customer Name:</strong> User ${ticket.userId}</p>
+            <p><strong>Issue Description:</strong> ${ticket.title}</p>
+            <p><strong>Details:</strong> ${ticket.body}</p>
+        `;
+
+        ticketContainer.appendChild(ticketCard);
+    });
+}
